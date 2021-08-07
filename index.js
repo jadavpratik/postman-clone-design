@@ -4,10 +4,8 @@ function checkApi(){
     $.ajax({
         url : url,
         method : method,
-        data : JSON.stringify(dataObj),
         success : function(res){
-            console.log(res);
-            $('[name="output"]').html(res);
+            $('[name="output"]').html(JSON.stringify(res, undefined, "    "));
         },
         error : function(xhr, status, error){
             $('[name="output"]').html(res);
@@ -60,24 +58,24 @@ function addInput(){
 
 
     var temp;
-    $('[name="key"]').val('');
-
-    switch(input_type){
-        case 'text':
-            temp = input_text;
-            break;
-        case 'password':
-            temp = input_password;
-            break;
-        case 'file':
-            temp = input_file;
-            break;
-        case 'textarea':
-            temp = input_textarea;
-            break;
-        default:
-            temp = input_text;
+    if(key!==""){
+        switch(input_type){
+            case 'text':
+                temp = input_text;
+                break;
+            case 'password':
+                temp = input_password;
+                break;
+            case 'file':
+                temp = input_file;
+                break;
+            case 'textarea':
+                temp = input_textarea;
+                break;
+            default:
+                temp = input_text;
+        }        
+        document.getElementsByClassName('input_lists')[0].innerHTML += temp;
     }
-
-    document.getElementsByClassName('input_lists')[0].innerHTML += temp;
+    $('[name="key"]').val('');
 }

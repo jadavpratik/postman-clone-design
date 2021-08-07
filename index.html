@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API CHECKER</title>
     <!-- Styling -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
@@ -27,9 +26,26 @@
     <!-- TITLE -->
     <p class="py-3 bg-dark text-center text-light h6">FORM API CHECKER</p>
 
-    <!-- API CHECKER-CONTAINER -->
-    <div class="p-5">
+    <!-- Tabs -->
+    <div class="px-5 pt-5">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+    </div>
 
+    <!-- API CHECKER-CONTAINER -->
+    <div class="pt-5 px-5">
         <div class="d-flex align-items-center">
             <!-- METHOD AND URL -->
             <select class="custom-select" style="width:250px;border-radius:4px 0px 0px 4px;" name="method">
@@ -45,12 +61,23 @@
             </button>
         </div>
 
-        <!-- CONTAINER OF INPUT AND OUTPUT -->
-        <div class="d-flex my-5">
+        <!-- ALERT POPUP -->
+        <div class="my-3 alert alert-warning alert-dismissible fade show d-none" role="alert">
+            <p class="m-0 h6">Something Went wrong</p>
+            <button type="button" class="close mb-1" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>            
 
+        <!--  INPUT-HEADERS  -->
+        <div class="mt-4">
+            <textarea class="form-control" name="" placeholder="Add Headers in JSON Format"></textarea>
+        </div>
+
+        <!-- CONTAINER OF INPUT AND OUTPUT -->
+        <div class="d-flex mt-4">
             <!-- INPUT -->
             <div>
-
                 <!-- ADD NEW KEY AND INPUT -->
                 <div class="d-flex align-items-center mb-3" style="width:350px;">
                     <select class="custom-select" style="width:100px;border-radius:4px 0px 0px 4px;" name="input_type">
@@ -59,26 +86,31 @@
                         <option value="file">File</option>
                         <option value="textarea">Textarea</option>
                     </select>
-                    <input type="text" class="form-control border-left-0" placeholder="Key" name="key" style="border-radius:0px 4px 4px 0px">
-                    <button onclick='addInput();' class="btn btn-outline-warning border-0">
+                    <input type="text" class="form-control border-left-0" placeholder="Key" name="key" style="border-radius:0px">
+                    <button onclick='addInput();' class="btn btn-warning" style="border-radius:0px 4px 4px 0px">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
-
                 <!-- LIST OF INPUTS -->
                 <div style="max-width:350px;" class="input_lists">
                     <!-- DYNAMIC RENDER INPUTS -->
                 </div><!-- END OF LIST INPUTS -->
+    
+                <!-- JSON INPUT -->
+                <textarea name="" class="form-control" placeholder="Input data as JSON"></textarea>
+
             </div><!-- END OF INPUT -->
 
             <!-- OUTPUT -->
-            <textarea class="ml-5 form-control" name="output" style="height:200px;" placeholder="Output">
-        </textarea>
+            <textarea class="ml-5 form-control" name="output" style="height:100%;min-height:250px; font-size:14px; line-height:26px;" readonly placeholder="Output"></textarea> 
 
         </div>
-
     </div>
 
+<!--     <footer>
+        <p class="m-0 text-center text-light bg-dark py-3 small">© 2021 by Api-checker</p>
+    </footer>
+ -->
 <script src="./index.js"></script>
 </body>
 </html>
