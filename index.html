@@ -26,86 +26,107 @@
     <!-- TITLE -->
     <p class="py-3 bg-dark text-center text-light h6">FORM API CHECKER</p>
 
-    <!-- Tabs -->
-    <div class="px-5 pt-5">
+    <div class="px-5 pt-4">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Active</a>
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#new_tab">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab">Contact</a>
             </li>
         </ul>
-    </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="new_tab">
+                <!-- API CHECKER-CONTAINER -->
+                <div class="pt-4">
+                    <!-- URL SECTION AND METHOD--- GET-POST-PUT-DELETE -->
+                    <div class="d-flex align-items-center">
+                        <!-- METHOD AND URL -->
+                        <select class="custom-select" style="width:250px;border-radius:4px 0px 0px 4px;" name="method">
+                            <option value="get">GET</option>
+                            <option value="post">POST</option>
+                            <option value="put">PUT</option>
+                            <option value="patch">PATCH</option>
+                            <option value="delete">DELETE</option>
+                        </select>
+                        <input class="form-control rounded-0 border-right-0 border-left-0" type="text" name="url" placeholder="URL Address">
+                        <button onclick="checkApi()" class="btn btn-dark" style="border-radius:0px 4px 4px 0px;">
+                            <span class="h6">CHECK</span>
+                        </button>
+                    </div>
 
-    <!-- API CHECKER-CONTAINER -->
-    <div class="pt-5 px-5">
-        <div class="d-flex align-items-center">
-            <!-- METHOD AND URL -->
-            <select class="custom-select" style="width:250px;border-radius:4px 0px 0px 4px;" name="method">
-                <option value="get">GET</option>
-                <option value="post">POST</option>
-                <option value="put">PUT</option>
-                <option value="patch">PATCH</option>
-                <option value="delete">DELETE</option>
-            </select>
-            <input class="form-control rounded-0 border-right-0 border-left-0" type="text" name="url" placeholder="URL Address">
-            <button onclick="checkApi()" class="btn btn-dark" style="border-radius:0px 4px 4px 0px;">
-                <span class="h6">CHECK</span>
-            </button>
-        </div>
+                    <!-- ALERT POPUP -->
+                    <div class="my-2 alert alert-warning alert-dismissible fade show d-none" role="alert">
+                        <p class="m-0 h6">Something Went wrong</p>
+                        <button type="button" class="close mb-1" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>            
 
-        <!-- ALERT POPUP -->
-        <div class="my-3 alert alert-warning alert-dismissible fade show d-none" role="alert">
-            <p class="m-0 h6">Something Went wrong</p>
-            <button type="button" class="close mb-1" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>            
+                    <!-- CONTAINER OF INPUT AND OUTPUT -->
+                    <div class="d-flex mt-4">
 
-        <!--  INPUT-HEADERS  -->
-        <div class="mt-4">
-            <textarea class="form-control" name="" placeholder="Add Headers in JSON Format"></textarea>
-        </div>
+                        <!-- INPUT ELEMENTS-->
+                        <div  style="width:350px">
+                            <!--  INPUT-HEADERS  -->
+                            <textarea class="form-control mb-4" name="" placeholder="Add Headers in JSON Format"></textarea>
 
-        <!-- CONTAINER OF INPUT AND OUTPUT -->
-        <div class="d-flex mt-4">
-            <!-- INPUT -->
-            <div>
-                <!-- ADD NEW KEY AND INPUT -->
-                <div class="d-flex align-items-center mb-3" style="width:350px;">
-                    <select class="custom-select" style="width:100px;border-radius:4px 0px 0px 4px;" name="input_type">
-                        <option value="text">Text</option>
-                        <option value="password">Password</option>
-                        <option value="file">File</option>
-                        <option value="textarea">Textarea</option>
-                    </select>
-                    <input type="text" class="form-control border-left-0" placeholder="Key" name="key" style="border-radius:0px">
-                    <button onclick='addInput();' class="btn btn-warning" style="border-radius:0px 4px 4px 0px">
-                        <i class="fas fa-plus"></i>
-                    </button>
+                            <!-- INPUT TYPE JSON/FORM -->
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#form">FORM</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#json">JSON</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-4">
+                                <div class="tab-pane fade show active" id="form">
+                                    <!-- ADD NEW KEY AND INPUT -->
+                                    <div class="d-flex align-items-center mb-3" style="width:350px;">
+                                        <select class="custom-select" style="width:100px;border-radius:4px 0px 0px 4px;" name="input_type">
+                                            <option value="text">Text</option>
+                                            <option value="password">Password</option>
+                                            <option value="file">File</option>
+                                            <option value="textarea">Textarea</option>
+                                        </select>
+                                        <input type="text" class="form-control border-left-0 border-right-0" placeholder="Key" name="key" style="border-radius:0px">
+                                        <button onclick='addInput();' class="btn btn-primary" style="border-radius:0px 4px 4px 0px">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- LIST OF INPUTS -->
+                                    <div style="max-width:350px;" class="input_lists">
+                                        <!-- DYNAMIC RENDER INPUTS -->
+                                    </div><!-- END OF LIST INPUTS -->
+                                </div>
+                                <div class="tab-pane fade" id="json">
+                                    <!-- JSON INPUT -->
+                                    <textarea name="" style="width:350px;" class="form-control" placeholder="Input data as JSON"></textarea>
+                                </div>
+                            </div>
+                        </div><!-- END OF INPUT -->
+
+                        <!-- OUTPUT -->
+                        <div class="ml-5 d-flex flex-column w-100">
+                            <p class="m-0 pb-1"><span class="h6 m-0 text-success">200 OK</span></p>
+                            <textarea class="form-control" name="output" style="min-height:350px;" placeholder="Output" readonly></textarea>
+                        </div>
+
+                    </div><!-- End of INPUT CONTAINTER -->
+
+             
                 </div>
-                <!-- LIST OF INPUTS -->
-                <div style="max-width:350px;" class="input_lists">
-                    <!-- DYNAMIC RENDER INPUTS -->
-                </div><!-- END OF LIST INPUTS -->
-    
-                <!-- JSON INPUT -->
-                <textarea name="" class="form-control" placeholder="Input data as JSON"></textarea>
-
-            </div><!-- END OF INPUT -->
-
-            <!-- OUTPUT -->
-            <textarea class="ml-5 form-control" name="output" style="height:100%;min-height:250px; font-size:14px; line-height:26px;" readonly placeholder="Output"></textarea> 
-
-        </div>
+            </div>
+            <div class="tab-pane fade" id="profile">...</div>
+            <div class="tab-pane fade" id="contact">...</div>
+        </div>        
     </div>
+
+
 
 <!--     <footer>
         <p class="m-0 text-center text-light bg-dark py-3 small">© 2021 by Api-checker</p>
